@@ -7,27 +7,27 @@ let tweets = [
 		postedOn: "Apr 6",
 		liked: false,
 		likeCount: 50,
-		image: "",
+		image: "https://placeimg.com/640/480/tech",
 	},
 	{
 		id: 1,
 		name: "Captain America",
 		username: "@capAmerica",
 		tweet: "Prank your friends or imitate celebrities. You can make fake twitter tweets in any creative way you like. Upload profile picture, select username, write message...",
-		postedOn: "Apr 2",
+		postedOn: "Apr 3",
 		liked: false,
 		likeCount: 100,
 		image: "",
 	},
 	{
 		id: 2,
-		name: "America",
-		username: "@camerica",
-		tweet: "Prank your friends or imitate celebrities. ",
+		name: "Kanye West",
+		username: "@kanyewest",
+		tweet: "You can't look at a glass half full or empty if it's overflowing.",
 		postedOn: "Apr 2",
 		liked: false,
-		likeCount: 100,
-		image: "https://placeimg.com/640/480/tech"
+		likeCount: 300,
+		image: ""
 	}
 ]
 
@@ -66,6 +66,7 @@ let toFollow = [
 		username: "@hello_pqr"
 	}
 ]
+
 let imageSrc = "";
 const preview = document.querySelector('img');
 const imageContainer = document.querySelector("#imageContainer");
@@ -112,20 +113,20 @@ const inputOnchange = (value) => {
 		tweet.classList.remove("bg-blue-200");
 		tweet.classList.add("bg-blue-500");
 	}
+	else{
+		tweet.classList.toggle("cursor-not-allowed");
+		tweet.classList.remove("bg-blue-500");
+		tweet.classList.add("bg-blue-200");
+	}
 }
 
 document.addEventListener('click', function (event) {
 	if(event.target.id !== "tweet") return;
 	event.preventDefault();
-	console.log("imageSrc", imageSrc);
 	if(event.target.id == "tweet") {
 		let inputValue = document.getElementById("tweetInput");
-		const options = {
-				month:"short",
-				day:"2-digit"
-		}
-		let date = new Date().toLocaleDateString("en-US",options);
-		console.log(inputValue.value.length);
+		let date = new Date();
+		date = timeAgo(date);
 		if(inputValue.value.length !== 0) {
 			tweets.unshift(
 				{
@@ -183,10 +184,15 @@ const displayTweets = (tweets) => {
 					<p class="group-hover:text-red-500">${tweet.likeCount}<p>
 				</div>`
 		}
+		let initials = getNameInitials(tweet.name);
 
 		tweetList.innerHTML += 
 			`<div class="flex space-x-6 p-4 border-b">
-				<div class="w-12 h-12 rounded-full bg-gray-300 flex-shrink-0 font-bold flex justify-center items-center text-gray-500">${tweet.name.slice(0,1)}</div>
+				<div 
+					class="w-12 h-12 rounded-full bg-gray-300 flex-shrink-0 font-bold flex justify-center items-center text-gray-500"
+				>
+					${initials}
+				</div>
 				<div class="flex flex-col">
 					<div class="flex items-center space-x-5">
 						<p class="font-bold text-gray-700">${tweet.name}</p>
@@ -219,17 +225,26 @@ const displayTweets = (tweets) => {
 	});
 }
 
+const getNameInitials = (name) => {
+	let arr = name.split(" ");
+	let first = arr[0].slice(0,1);
+	let second = arr[1] == undefined ? "" : arr[1].slice(0,1);
+	return `${first}${second}`;
+
+}
+
 const displayFollowing = (following) => {
 	let followingList = document.getElementById("followingList");
 	followingList.innerHTML = "";
 	following.map((user) => {
+		let initials = getNameInitials(user.name);
 		followingList.innerHTML += 
 			`<div class="flex justify-between items-center p-4 border-t">
 					<div class="flex space-x-4">
 						<div 
 							class="w-10 h-10 rounded-full bg-gray-300 flex-shrink-0 font-bold flex justify-center items-center text-sm text-gray-500"
 						>
-							${user.name.slice(0,1)}
+							${initials}
 						</div>
 						<div>
 							<p>${user.name}</p>
@@ -244,13 +259,14 @@ const displayFollowing = (following) => {
 const displayToFollow = (toFollow) => {
 	toFollowList.innerHTML = "";
 	toFollow.map((user) => {
+		let initials = getNameInitials(user.name);
 		toFollowList.innerHTML += 
 			`<div class="flex justify-between items-center p-4 border-t">
 				<div class="flex space-x-4">
 					<div 
 						class="w-10 h-10 rounded-full bg-gray-300 flex-shrink-0 font-bold flex justify-center items-center text-sm text-gray-500"
 					>
-						${user.name.slice(0,1)}
+						${initials}
 					</div>
 					<div>
 						<p>${user.name}</p>
@@ -288,4 +304,73 @@ const followUser = (id) => {
   toFollow = toFollow.filter(user => user.id !== id);
   displayToFollow(toFollow);
   displayFollowing(following);
+}
+
+const MONTH_NAMES = [
+  'January', 'February', 'March', 'April', 'May', 'June',
+  'July', 'August', 'September', 'October', 'November', 'December'
+];
+
+function getFormattedDate(date, prefomattedDate = false, hideYear = false) {
+  const day = date.getDate();
+  const month = MONTH_NAMES[date.getMonth()];
+  const year = date.getFullYear();
+  const hours = date.getHours();
+  let minutes = date.getMinutes();
+
+  if (minutes < 10) {
+    // Adding leading zero to minutes
+    minutes = `0${ minutes }`;
+  }
+
+  if (prefomattedDate) {
+    // Today at 10:20
+    // Yesterday at 10:20
+    return `${ prefomattedDate } at ${ hours }:${ minutes }`;
+  }
+
+  if (hideYear) {
+    // 10. January at 10:20
+    return `${ day }. ${ month } at ${ hours }:${ minutes }`;
+  }
+
+  // 10. January 2017. at 10:20
+  return `${ day }. ${ month } ${ year }. at ${ hours }:${ minutes }`;
+}
+
+
+// --- Main function
+function timeAgo(dateParam) {
+  if (!dateParam) {
+    return null;
+  }
+
+  const date = typeof dateParam === 'object' ? dateParam : new Date(dateParam);
+  const DAY_IN_MS = 86400000; // 24 * 60 * 60 * 1000
+  const today = new Date();
+  const yesterday = new Date(today - DAY_IN_MS);
+  const seconds = Math.round((today - date) / 1000);
+  const minutes = Math.round(seconds / 60);
+  const isToday = today.toDateString() === date.toDateString();
+  const isYesterday = yesterday.toDateString() === date.toDateString();
+  const isThisYear = today.getFullYear() === date.getFullYear();
+
+
+  if (seconds < 5) {
+    return 'now';
+  } else if (seconds < 60) {
+    return `${ seconds } seconds ago`;
+  } else if (seconds < 90) {
+    return 'about a minute ago';
+  } else if (minutes < 60) {
+    return `${ minutes } minutes ago`;
+  } else if (isToday) {
+    return getFormattedDate(date, 'Today'); // Today at 10:20
+  } else if (isYesterday) {
+    return getFormattedDate(date, 'Yesterday'); // Yesterday at 10:20
+  } else if (isThisYear) {
+    return getFormattedDate(date, false, true); // 10. January at 10:20
+  }
+
+  return getFormattedDate(date); // 10. January 2017. at 10:20
 }
