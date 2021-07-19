@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Document</title>
+	<script src="https://unpkg.com/tailwindcss-jit-cdn"></script>
+</head>
+<body>
+	<div class="max-w-6xl mx-auto flex md:space-x-20">
+		<div class="max-h-screen hidden md:block sticky top-0 left-0">
+			<div class="py-4 h-full flex flex-col justify-between">
+				<div>
+					<div class="p-2">
+						<svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 text-blue-500" viewBox="0 0 24 24" style="fill: currentColor"><path d="M19.633,7.997c0.013,0.175,0.013,0.349,0.013,0.523c0,5.325-4.053,11.461-11.46,11.461c-2.282,0-4.402-0.661-6.186-1.809 c0.324,0.037,0.636,0.05,0.973,0.05c1.883,0,3.616-0.636,5.001-1.721c-1.771-0.037-3.255-1.197-3.767-2.793 c0.249,0.037,0.499,0.062,0.761,0.062c0.361,0,0.724-0.05,1.061-0.137c-1.847-0.374-3.23-1.995-3.23-3.953v-0.05 c0.537,0.299,1.16,0.486,1.82,0.511C3.534,9.419,2.823,8.184,2.823,6.787c0-0.748,0.199-1.434,0.548-2.032 c1.983,2.443,4.964,4.04,8.306,4.215c-0.062-0.3-0.1-0.611-0.1-0.923c0-2.22,1.796-4.028,4.028-4.028 c1.16,0,2.207,0.486,2.943,1.272c0.91-0.175,1.782-0.512,2.556-0.973c-0.299,0.935-0.936,1.721-1.771,2.22 c0.811-0.088,1.597-0.312,2.319-0.624C21.104,6.712,20.419,7.423,19.633,7.997z"></path></svg>
+					</div>
+					<div class="flex flex-col gap-6 mt-8 group">
+						<div class="flex items-center space-x-2 text-blue-500 p-2 rounded-full hover:bg-blue-100 cursor-pointer">
+							<svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8" fill="currentColor" viewBox="0 0 24 24" stroke="currentColor">
+								<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6" />
+							</svg>
+							<a href="" class="text-lg font-bold">Home</a>
+						</div>
+						<div class="flex items-center space-x-2 p-2 rounded-full hover:bg-blue-100 hover:text-blue-500 cursor-pointer">
+							<svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+								<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 20l4-16m2 16l4-16M6 9h14M4 15h14" />
+							</svg>
+							<a href="" class="text-lg font-bold">Explore</a>
+						</div>
+						<div class="flex items-center space-x-2 p-2 rounded-full hover:bg-blue-100 hover:text-blue-500 cursor-pointer">
+							<svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+								<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 17h5l-1.405-1.405A2.032 2.032 0 0118 14.158V11a6.002 6.002 0 00-4-5.659V5a2 2 0 10-4 0v.341C7.67 6.165 6 8.388 6 11v3.159c0 .538-.214 1.055-.595 1.436L4 17h5m6 0v1a3 3 0 11-6 0v-1m6 0H9" />
+							</svg>
+							<a href="" class="text-lg font-bold">Notifications</a>
+						</div>
+						<div class="flex items-center space-x-2 p-2 rounded-full hover:bg-blue-100 hover:text-blue-500 cursor-pointer">
+							<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor"  viewBox="0 0 24 24"><path d="M20,4H4C2.897,4,2,4.897,2,6v12c0,1.103,0.897,2,2,2h16c1.103,0,2-0.897,2-2V6C22,4.897,21.103,4,20,4z M20,6v0.511 l-8,6.223L4,6.512V6H20z M4,18V9.044l7.386,5.745C11.566,14.93,11.783,15,12,15s0.434-0.07,0.614-0.211L20,9.044L20.002,18H4z"></path></svg>
+							<a href="" class="text-lg font-bold">Messages</a>
+						</div>
+					</div>
+				</div>
+				<div class="flex items-center space-x-2">
+					<div class="w-8 h-8 rounded-full bg-gray-300 flex-shrink-0 font-bold flex justify-center items-center text-sm text-gray-500">C</div>
+					<a href="#0" class="text-sm text-gray-500">@currentUser</a>
+				</div>
+			</div>
+		</div>
+		<div class="md:grid md:grid-cols-3 md:gap-10">
+			<div class="md:col-span-2 border-l border-r bg-gray-100">
+				<div class="flex bg-white p-4 border-b">
+					<h2 class="text-2xl font-bold">Home</h2>
+				</div>
+				<div class="flex space-x-6 w-full bg-white p-4">
+					<div class="w-12 h-12 rounded-full bg-gray-300 flex-shrink-0 font-bold flex justify-center items-center text-gray-500">C</div>
+					<div class="flex-grow">
+						<form id="tweetForm">
+							<textarea 
+								class="form-textarea mt-1 border border-gray-200 rounded-lg w-full" 
+								placeholder="What's happening?"
+								id="tweetInput"
+								value=""
+							></textarea>
+							<div class="relative rounded-lg hidden" id="imageContainer">
+								<button 
+									class="p-2 rounded-full absolute top-2 left-2 bg-gray-500 text-white" 
+									type="button"
+									onclick="clearImage()"
+								>
+									<svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+										<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+									</svg>
+								</button>
+								
+								<img src="" alt="" id="preview" class="rounded-lg h-64 w-full object-cover">
+							</div>
+							<div class="mt-4 flex justify-between items-center">
+								<label class="text-gray-500 " for="file">
+									<svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+										<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z" />
+									</svg>
+									
+									<input type="file" name="file" id="file" value="" onchange="previewFile()" class="hidden" >
+								</label>
+								<button 
+									class="bg-blue-200 text-white w-32 py-3 rounded-full cursor-not-allowed" 
+									type="submit" 
+									id="tweet"
+								>
+									Tweet
+								</button>
+							</div>
+						</form>
+					</div>
+				</div>
+				<div class="bg-white mt-5" id="tweetList">
+				</div>
+			</div>
+			<div class="md:block md:col-span-1 hidden">
+				<div class="flex bg-white py-3">
+					<input type="search" class="w-full bg-gray-100 border-gray-100 rounded-full px-4" placeholder="Search Twitter">
+				</div>
+				<div class="bg-gray-100 rounded-lg mb-5">
+					<div class="p-4">
+						<h2 class="text-xl">Following</h2>
+					</div>
+					<div id="followingList" class="text-sm">
+					</div>
+				</div>
+
+				<div class="bg-gray-100 rounded-lg">
+					<div class="p-4">
+						<h2 class="text-xl">Who to follow</h2>
+					</div>
+					<div id="toFollowList" class="text-sm">
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+  
+</body>
+<script src="index.js"></script>
+</html>
